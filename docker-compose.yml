@@ -76,62 +76,6 @@ services:
     depends_on:
       elasticsearch:
         condition: service_healthy
-  #db:
-  #  image: mysql:8
-  #  ports: 
-  #      - "3306:3306"
-  #  environment:
-  #      MYSQL_USER: user
-  #      MYSQL_PASSWORD: test
-  #      MYSQL_ROOT_PASSWORD: Bre@kthrough2312
-  #      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-  #      MYSQL_DATABASE: brimo_epayment_2
-  #      MYSQL_ROOT_HOST: "0.0.0.0"
-  #  volumes:
-  #      - ./dump:/docker-entrypoint-initdb.d
-  #      - persistent:/var/lib/mysql
-
-  #opbeans-go:
-  #  image: opbeans/opbeans-go:latest
-  #  ports:
-  #    - "127.0.0.1:${OPBEANS_GO_PORT:-8000}:8000"
-  #  logging:
-  #    driver: 'json-file'
-  #    options:
-  #        max-size: '2m'
-  #        max-file: '5'
-  #  environment:
-  #    - ELASTIC_APM_SERVER_URL=${ELASTIC_APM_SERVER_URL:-http://apm-server:8200}
-  #    - ELASTIC_APM_JS_SERVER_URL=${ELASTIC_APM_JS_SERVER_URL:-http://localhost:8200}
-  #    - ELASTIC_APM_LOG_FILE=stderr
-  #    - ELASTIC_APM_LOG_LEVEL=debug
-  #  depends_on:
-  #    redis:
-  #      condition: service_healthy
-  #    elasticsearch:
-  #      condition: service_healthy
-  #    apm-server:
-  #      condition: service_healthy
-  #  command:
-  #    - "/opbeans-go"
-  #    - "-listen=:${OPBEANS_GO_PORT:-8000}"
-  #    - "-frontend=/opbeans-frontend"
-  #    - "-cache=redis://redis:6379"
-
-
-  #redis:
-  #  image: redis:4
-  #  ports:
-  #    - 6379:6379
-  #  logging:
-  #    driver: 'json-file'
-  #    options:
-  #        max-size: '2m'
-  #        max-file: '5'
-  #  healthcheck:
-  #    test: ["CMD", "redis-cli", "ping"]
-  #    interval: 10s
-
 volumes:
   persistent:
   esdata:
